@@ -1,0 +1,16 @@
+[
+{
+  "modid": "metallurgychisel",
+  "name": "Metallurgy Chisel",
+  "description": "Metallurgy Chisel integration",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Team Metallurgy"],
+  "credits": "Chisel's Team, Textures: Erato and JadedCreaper",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["Metallurgy", "chisel"]
+}
+]

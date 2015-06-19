@@ -1,0 +1,126 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+repositories {
+    maven {
+        name = "Team Metallurgy Maven"
+        url = "http://shadow.gcod.net/maven"
+    }
+
+    maven {
+        name = "ChickenBones"
+        url = "http://chickenbones.net/maven"
+    }
+    
+    maven {
+        name = "Chisel"
+        url = "http://coloredlightscore.us.to/maven/chisel-2-dev/"
+    }
+}
+
+apply plugin: 'forge'
+
+version = "0.1"
+group= "com.teammetallurgy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "MetallurgyChisel"
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+    runDir = "eclipse"
+}
+
+dependencies {
+    compile "com.teammetallurgy:MetallurgyCore:${config.minecraft_version}-${config.metallurgycore_version}:deobf"
+    compile "com.teammetallurgy:Metallurgy:${config.minecraft_version}-${config.metallurgy_version}:deobf"
+    compile "codechicken:CodeChickenLib:${config.minecraft_version}-${config.cclib_version}:dev"
+    compile "codechicken:CodeChickenCore:${config.minecraft_version}-${config.ccc_version}:dev"
+    compile "codechicken:NotEnoughItems:${config.minecraft_version}-${config.nei_version}:dev"
+    compile "com.cricketcraft.chisel:Chisel2:${config.chisel_version}:deobf"
+}
+
+task buildInfo() {
+    def cmd = "git rev-parse --short HEAD"
+    def proc = cmd.execute()
+    proc.waitFor()
+    if (proc.exitValue() == 0) {
+        ext.revision = "DEV." + proc.text.trim()
+    } else {
+        ext.revision = "GITBORK"
+    }
+
+    if (System.getenv().BUILD_NUMBER != null) {
+        ext.buildNum = "${System.getenv().BUILD_NUMBER}"
+    } else {
+        ext.buildNum = "${project.buildInfo.revision}"
+    }
+}
+
+ext.artifact_version = 'NFG'
+if (System.getenv().ARTIFACT_VERSION == null) {
+    artifact_version = "${config.mod_version}.${project.buildInfo.buildNum}"
+}
+
+if(System.getenv().ARTIFACT_VERSION != null) {
+    artifact_version = "${system.getenv().ARTIFACT_VERSION}"
+}
+
+version = "${config.minecraft_version}-${artifact_version}"
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.artifact_version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.artifact_version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+
+artifacts {
+    archives deobfJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url : "file:///var/www/html/maven")
+        }
+    }
+}
