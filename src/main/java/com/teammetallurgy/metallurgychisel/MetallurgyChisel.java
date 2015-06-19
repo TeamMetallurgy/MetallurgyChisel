@@ -1,5 +1,7 @@
 package com.teammetallurgy.metallurgychisel;
 
+import com.teammetallurgy.metallurgychisel.utils.Log;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -19,7 +21,7 @@ public class MetallurgyChisel
     @EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
-
+        Log.setLogger(event.getModLog());
     }
 
     @EventHandler
