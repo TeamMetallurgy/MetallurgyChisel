@@ -23,6 +23,7 @@ public class MetallurgyChisel
     public void preinit(FMLPreInitializationEvent event)
     {
         Log.setLogger(event.getModLog());
+        MetallurgyChiselBlocks.init();
     }
 
     @EventHandler
