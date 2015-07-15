@@ -8,7 +8,7 @@
   "url": "",
   "updateUrl": "",
   "authorList": ["Team Metallurgy"],
-  "credits": "Chisel's Team, Textures: Erato and JadedCreaper",
+  "credits": "Chisel's Team, Textures: JadedCreeper",
   "logoFile": "",
   "screenshots": [],
   "dependencies": ["Metallurgy", "chisel"]
