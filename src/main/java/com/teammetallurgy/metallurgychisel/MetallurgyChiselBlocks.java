@@ -1,14 +1,24 @@
 package com.teammetallurgy.metallurgychisel;
 
+import java.util.Locale;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
 import com.cricketcraft.chisel.api.carving.CarvingUtils;
 import com.teammetallurgy.metallurgy.api.IMetalSet;
 import com.teammetallurgy.metallurgy.api.MetallurgyApi;
+import com.teammetallurgy.metallurgychisel.block.BlockNormalVariation;
+import com.teammetallurgy.metallurgychisel.item.ItemBlockNormalVariation;
+import com.teammetallurgy.metallurgychisel.utils.Log;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MetallurgyChiselBlocks
 {
+
+    private static final String[] variationList = { "Bar Storage", "Blank Plate", "Circle Plate", "Frame Crossed", "Frame", "Grate", "Horizontal Pipes", "Horizontal Plate", "Large Bricks", "Mesh",
+            "Ornate", "Plate", "Quarter Plate", "Rune", "Small Bricks", "Spiral", "Vertical Pipes", "Vertical Plate", "Warning", "Window" };
 
     public static void init()
     {
@@ -19,16 +29,40 @@ public class MetallurgyChiselBlocks
             String[] metalNames = metalSet.getMetalNames();
 
             Block defaultBrick = metalSet.getDefaultBricks();
-            for (String metalName : metalNames)
+
+            boolean firstRun = true;
+
+            for (String variation : variationList)
             {
+                BlockNormalVariation variationBlock = new BlockNormalVariation(variation, setName);
 
-                ItemStack brick = metalSet.getBrick(metalName);
+                String blockName = setName.toLowerCase(Locale.US).replace(" ", "_") + "_";
+                blockName += variation.toLowerCase(Locale.US).replace(" ", "_");
 
-                String groupName = metalName.toLowerCase() + "_brick";
+                GameRegistry.registerBlock(variationBlock, ItemBlockNormalVariation.class, blockName);
 
-                CarvingUtils.chisel.addVariation(groupName, defaultBrick, brick.getItemDamage(), 100);
-                // CarvingUtils.chisel.addVariation(groupName, variation);
+                for (String metalName : metalNames)
+                {
 
+                    ItemStack brick = metalSet.getBrick(metalName);
+                    if (brick == null)
+                    {
+                        Log.info("skipping " + metalName + " to " + variation + " for " + setName);
+                        continue;
+                    }
+
+                    Log.info("Adding " + metalName + " to " + variation + " for " + setName);
+
+                    variationBlock.addMetal(brick.getItemDamage(), metalName);
+
+                    String groupName = metalName.toLowerCase() + "_brick";
+
+                    CarvingUtils.chisel.addVariation(groupName, defaultBrick, brick.getItemDamage(), 100);
+
+                    CarvingUtils.chisel.addVariation(groupName, variationBlock, brick.getItemDamage(), 101 + brick.getItemDamage());
+                    // CarvingUtils.chisel.addVariation(groupName, variation);
+
+                }
             }
 
         }
