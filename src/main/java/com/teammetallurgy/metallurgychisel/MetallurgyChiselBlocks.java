@@ -24,6 +24,8 @@ public class MetallurgyChiselBlocks
         String[] setNames = MetallurgyApi.getSetNames();
         for (String setName : setNames)
         {
+            if (setName.equalsIgnoreCase("utility") || setName.equalsIgnoreCase("vanilla")) continue;
+
             IMetalSet metalSet = MetallurgyApi.getMetalSet(setName);
             String[] metalNames = metalSet.getMetalNames();
 
