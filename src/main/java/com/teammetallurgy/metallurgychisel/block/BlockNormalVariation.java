@@ -15,6 +15,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
 import com.teammetallurgy.metallurgychisel.MetallurgyChisel;
+import com.teammetallurgy.metallurgychisel.utils.RenderType;
 
 public class BlockNormalVariation extends Block
 {
@@ -72,6 +73,12 @@ public class BlockNormalVariation extends Block
     public boolean isNormalCube()
     {
         return false;
+    }
+
+    @Override
+    public int getRenderType()
+    {
+        return RenderType.allSideBlockRenderId;
     }
 
     @Override
