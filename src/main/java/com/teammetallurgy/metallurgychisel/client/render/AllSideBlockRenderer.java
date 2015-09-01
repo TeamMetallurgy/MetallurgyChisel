@@ -73,10 +73,10 @@ public class AllSideBlockRenderer implements ISimpleBlockRenderingHandler
     {
         renderer.setRenderAllFaces(true);
         renderer.setRenderFromInside(true);
-        renderer.renderStandardBlock(block, x, y, z);
+        renderer.renderStandardBlockWithColorMultiplier(block, x, y, z, 0.65f, 0.65f, 0.65f);
         renderer.setRenderFromInside(false);
-        renderer.renderStandardBlock(block, x, y, z);
         renderer.setRenderAllFaces(false);
+        renderer.renderStandardBlock(block, x, y, z);
         return true;
     }
 
