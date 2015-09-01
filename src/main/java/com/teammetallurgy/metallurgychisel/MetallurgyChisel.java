@@ -1,10 +1,12 @@
 package com.teammetallurgy.metallurgychisel;
 
+import com.teammetallurgy.metallurgychisel.proxy.IProxy;
 import com.teammetallurgy.metallurgychisel.utils.Log;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -19,6 +21,9 @@ public class MetallurgyChisel
     @Instance(MODID)
     public static MetallurgyChisel instance;
 
+    @SidedProxy(modId = MetallurgyChisel.MODID, clientSide = "com.teammetallurgy.metallurgychisel.proxy.ClientProxy", serverSide = "com.teammetallurgy.metallurgychisel.proxy.CommonProxy")
+    public static IProxy proxy;
+
     @EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
@@ -29,7 +34,7 @@ public class MetallurgyChisel
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        proxy.init();
     }
 
     @EventHandler
