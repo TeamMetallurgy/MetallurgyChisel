@@ -123,7 +123,8 @@ public class BlockNormalVariation extends Block
 
         if (name == null) return getUnlocalizedName() + "." + meta;
 
-        String unlocalized = "tile." + name.toLowerCase(Locale.US).replace(" ", ".");
+        String unlocalized = "tile." + MetallurgyChisel.MODID.toLowerCase(Locale.US);
+        unlocalized += "." + name.toLowerCase(Locale.US).replace(" ", ".");
         unlocalized += "." + variationName.toLowerCase(Locale.US).replace(" ", ".");
 
         return unlocalized;
