@@ -1,22 +1,28 @@
 
-# Blocks
-tile.metallurgychisel.angmallen.bar.storage.name=Angmallen Bar Storage
-tile.metallurgychisel.angmallen.blank.plate.name=Angmallen Blank Plate
-tile.metallurgychisel.angmallen.circle.plate.name=Angmallen Circle Plate
-tile.metallurgychisel.angmallen.frame.crossed.name=Angmallen Frame Crossed
-tile.metallurgychisel.angmallen.frame.name=Angmallen Frame
-tile.metallurgychisel.angmallen.grate.name=Angmallen Grate
-tile.metallurgychisel.angmallen.horizontal.pipes.name=Angmallen Horizontal Pipes
-tile.metallurgychisel.angmallen.horizontal.plate.name=Angmallen Horizontal Plate
-tile.metallurgychisel.angmallen.large.bricks.name=Angmallen Large Bricks
-tile.metallurgychisel.angmallen.mesh.name=Angmallen Mesh
-tile.metallurgychisel.angmallen.ornate.name=Angmallen Ornate
-tile.metallurgychisel.angmallen.plate.name=Angmallen Plate
-tile.metallurgychisel.angmallen.quarter.plate.name=Angmallen Quarter Plate
-tile.metallurgychisel.angmallen.rune.name=Angmallen Rune
-tile.metallurgychisel.angmallen.small.bricks.name=Angmallen Small Bricks
-tile.metallurgychisel.angmallen.spiral.name=Angmallen Spiral
-tile.metallurgychisel.angmallen.vertical.pipes.name=Angmallen Vertical Pipes
-tile.metallurgychisel.angmallen.vertical.plate.name=Angmallen Vertical Plate
-tile.metallurgychisel.angmallen.warning.name=Angmallen Warning
-tile.metallurgychisel.angmallen.window.name=Angmallen Window
+# Variations
+variation.metallurgychisel.bar.storage=%s Bar Storage
+variation.metallurgychisel.blank.plate=%s Blank Plate
+variation.metallurgychisel.circle.plate=%s Circle Plate
+variation.metallurgychisel.frame.crossed=%s Frame Crossed
+variation.metallurgychisel.frame=%s Frame
+variation.metallurgychisel.grate=%s Grate
+variation.metallurgychisel.horizontal.pipes=%s Horizontal Pipes
+variation.metallurgychisel.horizontal.plate=%s Horizontal Plate
+variation.metallurgychisel.large.bricks=%s Large Bricks
+variation.metallurgychisel.mesh=%s Mesh
+variation.metallurgychisel.ornate=%s Ornate
+variation.metallurgychisel.plate=%s Plate
+variation.metallurgychisel.quarter.plate=%s Quarter Plate
+variation.metallurgychisel.rune=%s Rune
+variation.metallurgychisel.small.bricks=%s Small Bricks
+variation.metallurgychisel.spiral=%s Spiral
+variation.metallurgychisel.vertical.pipes=%s Vertical Pipes
+variation.metallurgychisel.vertical.plate=%s Vertical Plate
+variation.metallurgychisel.warning=%s Warning
+variation.metallurgychisel.window=%s Window
+
+# Metals
+metal.metallurgychisel.angmallen=Angmallen
+
+# specific block localization override is available, example
+# tile.metallurgychisel.angmallen.bar.storage.name=Angmallen Bar Storage

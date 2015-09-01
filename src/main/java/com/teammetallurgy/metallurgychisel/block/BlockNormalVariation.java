@@ -129,4 +129,19 @@ public class BlockNormalVariation extends Block
 
         return unlocalized;
     }
+
+    public String getMetalName(ItemStack stack)
+    {
+        if (stack == null || stack.getItem() == null) return null;
+
+        int meta = stack.getItemDamage();
+        String name = metalNames.get(meta);
+
+        return name;
+    }
+
+    public String getVariationName()
+    {
+        return variationName;
+    }
 }
