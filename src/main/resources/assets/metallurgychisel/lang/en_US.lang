@@ -22,7 +22,61 @@ variation.metallurgychisel.warning=%s Warning
 variation.metallurgychisel.window=%s Window
 
 # Metals
+## Base set
 metal.metallurgychisel.angmallen=Angmallen
+metal.metallurgychisel.bronze=Bronze
+metal.metallurgychisel.copper=Copper
+metal.metallurgychisel.damascus.steel=Damascus Steel
+metal.metallurgychisel.hepatizon=Hepatizon
+metal.metallurgychisel.manganese=Manganese
+metal.metallurgychisel.tin=Tin
+metal.metallurgychisel.steel=Steel
 
-# specific block localization override is available, example
+## Ender set
+metal.metallurgychisel.desichalkos=Desichalkos
+metal.metallurgychisel.eximite=Eximite
+metal.metallurgychisel.meutoite=Meutoite
+
+## Fantasy set
+metal.metallurgychisel.adamantine=Adamantine
+metal.metallurgychisel.atlarus=Atlarus
+metal.metallurgychisel.astral.silver=Astral Silver
+metal.metallurgychisel.black.steel=Black Steel
+metal.metallurgychisel.carmot=Carmot
+metal.metallurgychisel.celenegil=Celenegil
+metal.metallurgychisel.deep.iron=Deep Iron
+metal.metallurgychisel.haderoth=Haderoth
+metal.metallurgychisel.infuscolium=Infuscolium
+metal.metallurgychisel.mithril=Mithril
+metal.metallurgychisel.orichalcum=Orichalcum
+metal.metallurgychisel.oureclase=Oureclase
+metal.metallurgychisel.prometheum=Prometheum
+metal.metallurgychisel.quicksilver=Quicksilver
+metal.metallurgychisel.rubracium=Rubracium
+metal.metallurgychisel.tartarite=Tartarite
+
+## Nether set
+metal.metallurgychisel.alduorite=Alduorite
+metal.metallurgychisel.amordrine=Amordrine
+metal.metallurgychisel.ceruclase=Ceruclase
+metal.metallurgychisel.ignatius=Ignatius
+metal.metallurgychisel.inolashite=Inolashite
+metal.metallurgychisel.kalendrite=Kalendrite
+metal.metallurgychisel.lemurite=Lemurite
+metal.metallurgychisel.midasium=Midasium
+metal.metallurgychisel.sanguinite=Sanguinite
+metal.metallurgychisel.shadow.steel=Shadow Steel
+metal.metallurgychisel.shadow.iron=Shadow Iron
+metal.metallurgychisel.vulcanite=Vulcanite
+metal.metallurgychisel.vyroxeres=Vyroxeres
+
+## Precious set
+metal.metallurgychisel.brass=Brass
+metal.metallurgychisel.electrum=Electrum
+metal.metallurgychisel.platinum=Platinum
+metal.metallurgychisel.silver=Silver
+metal.metallurgychisel.zinc=Zinc
+
+# specific block localization override is available, examples
 # tile.metallurgychisel.angmallen.bar.storage.name=Angmallen Bar Storage
+# tile.metallurgychisel.damascus.steel.warning.name=Damascus Steel warning
