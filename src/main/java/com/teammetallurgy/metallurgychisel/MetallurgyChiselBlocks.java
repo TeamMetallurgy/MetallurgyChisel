@@ -10,7 +10,6 @@ import com.teammetallurgy.metallurgy.api.IMetalSet;
 import com.teammetallurgy.metallurgy.api.MetallurgyApi;
 import com.teammetallurgy.metallurgychisel.block.BlockNormalVariation;
 import com.teammetallurgy.metallurgychisel.item.ItemBlockNormalVariation;
-import com.teammetallurgy.metallurgychisel.utils.Log;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -47,22 +46,20 @@ public class MetallurgyChiselBlocks
                     ItemStack brick = metalSet.getBrick(metalName);
                     if (brick == null)
                     {
-                        Log.info("skipping " + metalName + " to " + variation + " for " + setName);
                         continue;
                     }
-
-                    Log.info("Adding " + metalName + " to " + variation + " for " + setName);
 
                     variationBlock.addMetal(brick.getItemDamage(), metalName);
 
                     String groupName = metalName.toLowerCase() + "_brick";
 
-                    CarvingUtils.chisel.addVariation(groupName, defaultBrick, brick.getItemDamage(), 100);
+                    if (firstRun) CarvingUtils.chisel.addVariation(groupName, defaultBrick, brick.getItemDamage(), 100);
 
                     CarvingUtils.chisel.addVariation(groupName, variationBlock, brick.getItemDamage(), 101 + brick.getItemDamage());
-                    // CarvingUtils.chisel.addVariation(groupName, variation);
 
                 }
+
+                firstRun = false;
             }
 
         }
