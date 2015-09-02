@@ -71,12 +71,20 @@ public class AllSideBlockRenderer implements ISimpleBlockRenderingHandler
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
     {
-        renderer.setRenderAllFaces(true);
-        renderer.setRenderFromInside(true);
-        renderer.renderStandardBlockWithColorMultiplier(block, x, y, z, 0.65f, 0.65f, 0.65f);
-        renderer.setRenderFromInside(false);
-        renderer.setRenderAllFaces(false);
+
         renderer.renderStandardBlock(block, x, y, z);
+
+        double delta = 0.01d;
+
+        renderer.flipTexture = true;
+        renderer.overrideBlockBounds(block.getBlockBoundsMinX() + delta, block.getBlockBoundsMaxX() - delta, block.getBlockBoundsMinY() + delta, block.getBlockBoundsMaxY() - delta,
+                block.getBlockBoundsMinZ() + delta, block.getBlockBoundsMaxZ() - delta);
+
+        renderer.renderStandardBlockWithColorMultiplier(block, x, y, z, 0.65f, 0.65f, 0.65f);
+
+        renderer.unlockBlockBounds();
+        renderer.flipTexture = false;
+
         return true;
     }
 
