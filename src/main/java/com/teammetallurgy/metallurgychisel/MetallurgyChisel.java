@@ -1,5 +1,7 @@
 package com.teammetallurgy.metallurgychisel;
 
+import net.minecraft.creativetab.CreativeTabs;
+
 import com.teammetallurgy.metallurgychisel.proxy.IProxy;
 import com.teammetallurgy.metallurgychisel.utils.Log;
 
@@ -24,10 +26,14 @@ public class MetallurgyChisel
     @SidedProxy(modId = MetallurgyChisel.MODID, clientSide = "com.teammetallurgy.metallurgychisel.proxy.ClientProxy", serverSide = "com.teammetallurgy.metallurgychisel.proxy.CommonProxy")
     public static IProxy proxy;
 
+    public static CreativeTabs CREATIVE_TAB;
+
     @EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
         Log.setLogger(event.getModLog());
+        CREATIVE_TAB = new MetallurgyChiselTab();
+        MetallurgyChiselItems.init();
         MetallurgyChiselBlocks.init();
     }
 

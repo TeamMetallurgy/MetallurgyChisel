@@ -33,7 +33,7 @@ public class BlockNormalVariation extends Block
         setResistance(1.0F);
         this.variationName = variationName;
         setName = metalSet;
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(MetallurgyChisel.CREATIVE_TAB);
     }
 
     @Override
