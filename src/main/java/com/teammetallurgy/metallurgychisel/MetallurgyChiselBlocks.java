@@ -9,6 +9,7 @@ import com.cricketcraft.chisel.api.carving.CarvingUtils;
 import com.teammetallurgy.metallurgy.api.IMetalSet;
 import com.teammetallurgy.metallurgy.api.MetallurgyApi;
 import com.teammetallurgy.metallurgychisel.block.BlockNormalVariation;
+import com.teammetallurgy.metallurgychisel.block.BlockTransparentVariation;
 import com.teammetallurgy.metallurgychisel.item.ItemBlockNormalVariation;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -16,11 +17,19 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class MetallurgyChiselBlocks
 {
 
-    private static final String[] variationList = { "Bar Storage", "Blank Plate", "Circle Plate", "Frame Crossed", "Frame", "Grate", "Horizontal Pipes", "Horizontal Plate", "Large Bricks", "Mesh",
-            "Ornate", "Plate", "Quarter Plate", "Rune", "Small Bricks", "Spiral", "Vertical Pipes", "Vertical Plate", "Warning", "Window" };
+    private static final String[] variationNormalList = { "Bar Storage", "Blank Plate", "Circle Plate", "Horizontal Pipes", "Horizontal Plate", "Large Bricks", "Ornate", "Plate", "Quarter Plate",
+            "Rune", "Small Bricks", "Spiral", "Vertical Pipes", "Vertical Plate", "Warning" };
+    private static final String[] variationTransparentList = { "Frame", "Frame Crossed", "Grate", "Mesh", "Window" };
 
     public static void init()
     {
+        createBlocks(variationNormalList, false);
+        createBlocks(variationTransparentList, true);
+    }
+
+    private static void createBlocks(String[] variationList, boolean transparent)
+    {
+
         String[] setNames = MetallurgyApi.getSetNames();
         for (String setName : setNames)
         {
@@ -35,7 +44,10 @@ public class MetallurgyChiselBlocks
 
             for (String variation : variationList)
             {
-                BlockNormalVariation variationBlock = new BlockNormalVariation(variation, setName);
+                BlockNormalVariation variationBlock;
+
+                if (transparent) variationBlock = new BlockTransparentVariation(variation, setName);
+                else variationBlock = new BlockNormalVariation(variation, setName);
 
                 String blockName = setName.toLowerCase(Locale.US).replace(" ", "_") + "_";
                 blockName += variation.toLowerCase(Locale.US).replace(" ", "_");

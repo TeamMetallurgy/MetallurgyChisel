@@ -12,10 +12,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 
 import com.teammetallurgy.metallurgychisel.MetallurgyChisel;
-import com.teammetallurgy.metallurgychisel.utils.RenderType;
 
 public class BlockNormalVariation extends Block
 {
@@ -55,36 +53,6 @@ public class BlockNormalVariation extends Block
         {
             list.add(new ItemStack(this, 1, entry.getKey()));
         }
-    }
-
-    @Override
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
-
-    @Override
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
-
-    @Override
-    public boolean isNormalCube()
-    {
-        return false;
-    }
-
-    @Override
-    public int getRenderType()
-    {
-        return RenderType.allSideBlockRenderId;
-    }
-
-    @Override
-    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-    {
-        return true;
     }
 
     @Override
