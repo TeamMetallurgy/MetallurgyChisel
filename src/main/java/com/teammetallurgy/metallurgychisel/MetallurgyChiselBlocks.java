@@ -38,7 +38,7 @@ public class MetallurgyChiselBlocks
             IMetalSet metalSet = MetallurgyApi.getMetalSet(setName);
             String[] metalNames = metalSet.getMetalNames();
 
-            Block defaultBrick = metalSet.getDefaultBricks();
+            Block defaultBlock = metalSet.getDefaultBlock();
 
             boolean firstRun = true;
 
@@ -57,19 +57,19 @@ public class MetallurgyChiselBlocks
                 for (String metalName : metalNames)
                 {
 
-                    ItemStack brick = metalSet.getBrick(metalName);
-                    if (brick == null)
+                    ItemStack storageBlock = metalSet.getBlock(metalName);
+                    if (storageBlock == null)
                     {
                         continue;
                     }
 
-                    variationBlock.addMetal(brick.getItemDamage(), metalName);
+                    variationBlock.addMetal(storageBlock.getItemDamage(), metalName);
 
-                    String groupName = metalName.toLowerCase() + "_brick";
+                    String groupName = metalName.toLowerCase(Locale.US).trim().replace(" ", "_") + "_block";
 
-                    if (firstRun) CarvingUtils.chisel.addVariation(groupName, defaultBrick, brick.getItemDamage(), 100);
+                    if (firstRun) CarvingUtils.chisel.addVariation(groupName, defaultBlock, storageBlock.getItemDamage(), 100);
 
-                    CarvingUtils.chisel.addVariation(groupName, variationBlock, brick.getItemDamage(), 101 + brick.getItemDamage());
+                    CarvingUtils.chisel.addVariation(groupName, variationBlock, storageBlock.getItemDamage(), 101 + storageBlock.getItemDamage());
 
                 }
 
