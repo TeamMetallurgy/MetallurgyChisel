@@ -46,10 +46,7 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-minecraft {
-    version = config.minecraft_version + "-" + config.forge_version
-    runDir = "eclipse"
-}
+
 
 dependencies {
     compile "com.teammetallurgy:MetallurgyCore:${config.minecraft_version}-${config.metallurgycore_version}:deobf"
@@ -87,6 +84,14 @@ if(System.getenv().ARTIFACT_VERSION != null) {
 }
 
 version = "${config.minecraft_version}-${artifact_version}"
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+    runDir = "eclipse"
+    
+    replace "%version%", project.artifact_version
+    replaceIn "MetallurgyChisel.java"
+}
 
 processResources
 {
